@@ -37,7 +37,7 @@ def scrape(keyword):
     if len(listItems) == 0:
         return "not found" 
     else:
-        print ("list length: " , len(listItems))
+        #print ("list length: " , len(listItems))
         return listItems   
            
 

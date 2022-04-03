@@ -5,6 +5,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore  import *
 from scrapeDef import *
 
+buttonList = []
+
 class App(QMainWindow):
 
     def __init__(self):
@@ -24,7 +26,13 @@ class App(QMainWindow):
         self.textbox = QLineEdit(self)
         self.textbox.move(10, 20)
         self.textbox.resize(300,40)
-        
+
+        '''
+        #buttonList.append(Button(self))
+        self.form_widget = FormWidget(self)
+        self.setCentralWidget(self.form_widget)
+        '''
+
         # Create a button in the window
         self.button = QPushButton('search', self)
         self.button.move(10,80)
@@ -48,6 +56,7 @@ class App(QMainWindow):
         # connect button to function on_click
         self.button2.clicked.connect(self.on_click_reference)
         self.show()
+        
     
     @pyqtSlot()
     def on_click(self):
@@ -62,6 +71,7 @@ class App(QMainWindow):
         result = QMessageBox.question(self, 'webscraper', "Results: \n\n" + stringRes, QMessageBox.Ok, QMessageBox.Ok)
         
         self.textbox.setText("")
+    
 
     @pyqtSlot()
     def on_click_readme(self):
@@ -72,7 +82,40 @@ class App(QMainWindow):
     @pyqtSlot()
     def on_click_reference(self):
         webbrowser.open('https://www.newegg.com/todays-deals?cm_sp=Homepage_dailydeal-_--_-10272021&quicklink=true')
+
+# create a class for the buttons
+'''
+class FormWidget(QWidget):
+    def __init__(self,parent):        
+        super(FormWidget,self).__init__(parent)
+        self.layout = QVBoxLayout(self)
+
+        self.button = QPushButton('search')
+        self.layout.addWidget(self.button)
+
+        self.setLayout(self.layout)
+        self.button.clicked.connect(self.on_click(parent))
     
+    @pyqtSlot()
+    def on_click(self, parent):
+        textboxValue = parent.textbox.text()
+        scrapeResult = scrape(textboxValue)
+        # scrape Result is a list of results
+        stringRes = ""
+        for item in scrapeResult:
+            # turn results into a string
+            stringRes = stringRes + item + "\n" 
+
+        result = QMessageBox.question(self, 'webscraper', "Results: \n\n" + stringRes, QMessageBox.Ok, QMessageBox.Ok)
+        
+        self.textbox.setText("")
+'''
+
+
+ 
+    
+    
+
 def main():
     app = QApplication(sys.argv)
     ex = App()

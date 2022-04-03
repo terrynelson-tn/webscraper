@@ -15,5 +15,5 @@
 # installation
 - pip install .
 - pip install -e .
-- check installation with "new" project root
+- check installation with "new" on project root
 
