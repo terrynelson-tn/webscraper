@@ -73,11 +73,12 @@ class App(QMainWindow):
     def on_click_reference(self):
         webbrowser.open('https://www.newegg.com/todays-deals?cm_sp=Homepage_dailydeal-_--_-10272021&quicklink=true')
     
-
+def main():
+    app = QApplication(sys.argv)
+    ex = App()
+    sys.exit(app.exec_())
 
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = App()
-    sys.exit(app.exec_())
+    exit(main())
