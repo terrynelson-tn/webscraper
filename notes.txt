@@ -1,9 +1,0 @@
-div id = app
-	div class = page content
-		section class = page-section is-gray-background
-			div class = page-section-inner
-				div class = item-cells-wrap title-cells five-cells
-					div class = item-cell
-						div class = item-container items-grid-view
-							div class = item-info
-								a class = item-title.text
