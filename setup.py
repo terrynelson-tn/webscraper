@@ -9,11 +9,25 @@ setup(
     url='https://github.com/terrynelson-tn/webscraper/',
     install_requires=[
         'requests',
-        'importlib-metadata; python_version == "3.8"',
+        'beautifulsoup4',
+        'certifi',
+        'charset-normalizer',
+        'idna',
+        "importlib-metadata",
+        'lxml',
+        'PyQt5',
+        'PyQt5-Qt5',
+        'PyQt5-sip',
+        'requests',
+        'soupsieve',
+        'urllib3',
+        'zipp'
     ],
     entry_points={
         'console_scripts': [
             'new=gui:main',
         ]
-    }
+    },
+    python_requires= '>=3.9'
+    
 )
