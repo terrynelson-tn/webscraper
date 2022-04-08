@@ -27,34 +27,16 @@ class App(QMainWindow):
         self.textbox.move(10, 20)
         self.textbox.resize(300,40)
 
-        '''
-        #buttonList.append(Button(self))
-        self.form_widget = FormWidget(self)
-        self.setCentralWidget(self.form_widget)
-        '''
 
-        # Create a button in the window
-        self.button = QPushButton('search', self)
-        self.button.move(10,80)
-
-        # connect button to function on_click
-        self.button.clicked.connect(self.on_click)
+        # search button
+        scraperButton(self, 10, 80, 'search', self.on_click)
         
-
-        # Create another button in the window
-        self.button1 = QPushButton('readme', self)
-        self.button1.move(210,80)
-
-        # connect button to function on_click
-        self.button1.clicked.connect(self.on_click_readme)
+        # readme button
+        scraperButton(self, 210, 80, 'readme', self.on_click_readme)
         
+        # page reference button 
+        scraperButton(self, 110, 80, 'pageRef', self.on_click_reference)
 
-        # Create another button in the window
-        self.button2 = QPushButton('pageRef', self)
-        self.button2.move(110,80)
-
-        # connect button to function on_click
-        self.button2.clicked.connect(self.on_click_reference)
         self.show()
         
     
@@ -84,32 +66,14 @@ class App(QMainWindow):
         webbrowser.open('https://www.newegg.com/todays-deals?cm_sp=Homepage_dailydeal-_--_-10272021&quicklink=true')
 
 # create a class for the buttons
-'''
-class FormWidget(QWidget):
-    def __init__(self,parent):        
-        super(FormWidget,self).__init__(parent)
-        self.layout = QVBoxLayout(self)
 
-        self.button = QPushButton('search')
-        self.layout.addWidget(self.button)
+class scraperButton(QPushButton):
+    def __init__(self, root: QMainWindow, x, y, name, on_click):
+        super().__init__(name, root)
+        self.move(x,y)
+        self.clicked.connect(on_click)
+        self.show()
 
-        self.setLayout(self.layout)
-        self.button.clicked.connect(self.on_click(parent))
-    
-    @pyqtSlot()
-    def on_click(self, parent):
-        textboxValue = parent.textbox.text()
-        scrapeResult = scrape(textboxValue)
-        # scrape Result is a list of results
-        stringRes = ""
-        for item in scrapeResult:
-            # turn results into a string
-            stringRes = stringRes + item + "\n" 
-
-        result = QMessageBox.question(self, 'webscraper', "Results: \n\n" + stringRes, QMessageBox.Ok, QMessageBox.Ok)
-        
-        self.textbox.setText("")
-'''
 
 
  
